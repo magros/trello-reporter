@@ -2,6 +2,7 @@
 
 const rp = require('request-promise');
 const {sendEmail} = require('./mailer');
+require('dotenv').config();
 
 // const boardId = 'R9dmoDTl';
 
@@ -10,8 +11,8 @@ const makeRequest = function(url, qs = {}) {
     method: 'GET',
     url: 'https://api.trello.com/' + url,
     qs: Object.assign({
-      key: 'fc9074e2b09f36df86f6dd0d33cdeb9b',
-      token: 'd521e45ef8cb3cfb5317a72eafd73c929ee6e52988a2670a8619c9b3928178a9',
+      key: process.env.TRELLO_ACCESS_KEY,
+      token: process.env.TRELLO_ACCESS_TOKEN,
       cards: 'none',
       fields: 'id,name',
       card_fields: 'false',
